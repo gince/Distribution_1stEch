@@ -512,7 +512,7 @@ int main() {
 		
 		IloCplex cplex(env);
 		cplex.extract(mod);
-		cplex.exportModel("disaster_allocation_3com_v8.lp");
+		cplex.exportModel("model.lp");
 		
 		cplex.solve();
 		
