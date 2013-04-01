@@ -1,0 +1,7 @@
+DerivedData/
+Distribution_1stEch-*/
+Distribution_1stEch.1
+build/**
+model.lp
+Distribution_1stEch.xcodeproj/*
+!project.pbxproj
