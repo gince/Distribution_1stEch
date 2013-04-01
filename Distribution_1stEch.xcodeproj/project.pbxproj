@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4526512017090CD800D732AD /* functions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4526511F17090CD800D732AD /* functions.cpp */; };
 		8DD76F650486A84900D96B5E /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 08FB7796FE84155DC02AAC07 /* main.cpp */; settings = {ATTRIBUTES = (); }; };
 		8DD76F6A0486A84900D96B5E /* Distribution_1stEch.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6859E8B029090EE04C91782 /* Distribution_1stEch.1 */; };
 /* End PBXBuildFile section */
@@ -26,6 +27,12 @@
 
 /* Begin PBXFileReference section */
 		08FB7796FE84155DC02AAC07 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		4526510D17090BAC00D732AD /* cplex_desktop.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = cplex_desktop.xcconfig; sourceTree = "<group>"; };
+		4526511017090BE800D732AD /* cplex_laptop.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = cplex_laptop.xcconfig; sourceTree = "<group>"; };
+		4526511317090C1900D732AD /* definitions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = definitions.h; sourceTree = "<group>"; };
+		4526511E17090CD800D732AD /* functions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = functions.h; sourceTree = "<group>"; };
+		4526511F17090CD800D732AD /* functions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = functions.cpp; sourceTree = "<group>"; };
+		4526512817090D8100D732AD /* data.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = data.txt; sourceTree = "<group>"; };
 		8DD76F6C0486A84900D96B5E /* Distribution_1stEch */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Distribution_1stEch; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6859E8B029090EE04C91782 /* Distribution_1stEch.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Distribution_1stEch.1; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -47,6 +54,9 @@
 				08FB7795FE84155DC02AAC07 /* Source */,
 				C6859E8C029090F304C91782 /* Documentation */,
 				1AB674ADFE9D54B511CA2CBB /* Products */,
+				4526510D17090BAC00D732AD /* cplex_desktop.xcconfig */,
+				4526511017090BE800D732AD /* cplex_laptop.xcconfig */,
+				4526512817090D8100D732AD /* data.txt */,
 			);
 			name = Distribution_1stEch;
 			sourceTree = "<group>";
@@ -55,6 +65,9 @@
 			isa = PBXGroup;
 			children = (
 				08FB7796FE84155DC02AAC07 /* main.cpp */,
+				4526511317090C1900D732AD /* definitions.h */,
+				4526511E17090CD800D732AD /* functions.h */,
+				4526511F17090CD800D732AD /* functions.cpp */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -126,6 +139,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DD76F650486A84900D96B5E /* main.cpp in Sources */,
+				4526512017090CD800D732AD /* functions.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
