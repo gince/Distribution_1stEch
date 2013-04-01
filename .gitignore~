@@ -1,7 +1,0 @@
-DerivedData/
-Vehicles_1st_echelon-*/
-Vehicles_1st_echelon.1
-build/**
-model.lp
-Vehicles_1st_echelon.xcodeproj/*
-!project.pbxproj
