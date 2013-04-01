@@ -185,7 +185,7 @@ int main() {
 		 }
 		 */
 		//Adding objectives to env
-		mod.add(objs[0]);
+		mod.add(objs[1]);
 		
 		cout << "GOAL CONSTRAINTS " << endl;
 		//				mod.add(tMort == 0);
@@ -608,8 +608,8 @@ int main() {
 		cout << "tMort = " << cplex.getValue(tMort) << endl;
 		cout << "tSuff = " << cplex.getValue(tSuff) << endl;
 		
-		env.end();
-		mod.end();
+//		env.end();
+//		mod.end();
 	}
 	catch (IloException& e) {
 		cerr << "ERROR: " << e.getMessage() << endl;

@@ -10,7 +10,7 @@
 #ifndef DISASTER_ALLOCATION_FXNS_H_
 #define DISASTER_ALLOCATION_FXNS_H_
 
-#include "disaster_allocation_defs.h"
+#include "definitions.h"
 
 vector<DNode> getDNodes();
 vector<SNode> getSNodes();
