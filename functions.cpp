@@ -1,10 +1,8 @@
 /*
- *  functions.cpp
- *  Distribution_1stEch
+ * disaster_allocation_fxns.cpp
  *
- *  Created by Guven Ince on 3/31/13.
- *  Copyright 2013 UMASS. All rights reserved.
- *
+ *  Created on: Apr 16, 2012
+ *      Author: guvenince
  */
 
 #include <ilcplex/ilocplex.h>
@@ -17,8 +15,8 @@ using namespace std;
 
 #include "functions.h"
 
-IloInt M = 1;
-IloInt N = 1;
+IloInt M = 5;
+IloInt N = 30;
 IloInt T = 13;
 IloInt K = 3;
 IloInt B = 8;
@@ -31,8 +29,8 @@ vector<vector<int> > nStates(N, vector<int>(T));
 IloEnv env;
 IloModel mod(env);
 
+SNode ANK, IST, IZM, MER, SAM;
 DNode AVC, BAH, BAK, GUN, ZEY, BYG, EMI, FAT, BAG, BAY, ESE, EYU, GAZ, KUC, ADA, KAD, KAR, MAL, PEN, TUZ, BES, KAG, SAR, SIS, BEY, UMR, USK, BUY, CAT, SIL;
-SNode  ANK, IST, IZM, MER, SAM;
 Cluster EuMar, Historic, EuIn, AsMar, EuBos, AsBos, OutIMM;
 
 set<int> bundle;
@@ -48,11 +46,11 @@ IloNumArray goal(env);
 IloNumArray pGoal(env);
 
 //VARIABLES
+IloNumVarArray Sk(env, K);
 NumVar3dMatrix s(env, T);
 NumVarMatrix sT(env, T);
 NumVar3dMatrix I(env, T);
 NumVar4dMatrix x(env, T);
-IloNumVarArray Sk(env, K);
 
 IntVar3dMatrix J(env, T);
 IntVar3dMatrix E(env, T);
@@ -140,10 +138,17 @@ vector<Cluster> getClusters() {
 }
 
 void toLatexP(IloCplex cplex, vector<DNode> dstrcts) {
+	char fname[100];
+	string ffname = "../../Tez/latex/dissertation/tables/districts/";
+	ffname.append(dstrcts[j].getName());
+	ffname.append(".table");
+	int TempNumOne=ffname.size();
+	for (int a=0;a<=TempNumOne;a++)
+		fname[a]=ffname[a];
 	ofstream outfile;
 	outfile.imbue(locale(std::locale(), new thSep));
 	double scalefactor = .60;
-	outfile.open("../../Tez/latex/dissertation/tables/toLatexP.table");
+	outfile.open(fname);
 	outfile.setf(ios::fixed, ios::floatfield);
 	outfile << setprecision(0);
 	outfile << "\\begin{table}[H]\\centering" << endl;

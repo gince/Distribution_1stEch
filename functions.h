@@ -1,10 +1,8 @@
 /*
- *  functions.h
- *  Distribution_1stEch
+ * disaster_allocation_fxns.h
  *
- *  Created by Guven Ince on 3/31/13.
- *  Copyright 2013 UMASS. All rights reserved.
- *
+ *  Created on: Apr 16, 2012
+ *      Author: guvenince
  */
 
 #ifndef DISASTER_ALLOCATION_FXNS_H_
@@ -20,7 +18,7 @@ void toLatexDemand(IloNumArray, vector<DNode>);
 //void toLatexMIndex(IloNumArray2, vector<DNode>);
 //void toLatexDuration(IloNumArray2, vector<SNode>, vector<DNode>);
 void toLatexX(NumVar3dMatrix, vector<SNode>, vector<DNode>, IloCplex);
-void toLatexP(IloCplex cplex, vector<DNode>);
+void toLatexP(IloCplex, vector<DNode>);
 //void toLatexYf(IntVar3dMatrix, vector<SNode>, vector<DNode>, IloCplex);
 //void toLatexYb(IntVar3dMatrix, vector<SNode>, vector<DNode>, IloCplex);
 void toLatexI(NumVarMatrix, vector<SNode>, IloCplex);

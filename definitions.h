@@ -1,10 +1,8 @@
 /*
- *  definitions.h
- *  Distribution_1stEch
+ * disaster_allocation_defs.h
  *
- *  Created by Guven Ince on 3/31/13.
- *  Copyright 2013 UMASS. All rights reserved.
- *
+ *  Created on: Apr 16, 2012
+ *      Author: guvenince
  */
 
 #ifndef DISASTER_ALLOCATION_DEFS_H_
@@ -137,6 +135,7 @@ public:
 	}
 };
 
+
 typedef IloArray<IloNumArray> NumMatrix;
 typedef IloArray<IloNumArray2> Num3dMatrix;
 
@@ -191,7 +190,6 @@ extern NumVar3dMatrix s;
 extern NumVarMatrix sT;
 extern NumVar3dMatrix I;
 extern NumVar4dMatrix x;
-extern IloNumVarArray Sk;
 
 extern IntVar3dMatrix J;
 extern IntVar3dMatrix E; // modeldeki \xi

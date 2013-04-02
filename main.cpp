@@ -1,4 +1,4 @@
-// 6'dan farki 0 seviyesine geliste unutulan bir constraint eklendi
+// 1'dan farki 0 seviyesine geliste unutulan bir constraint eklendi
 // Bu type1 ve type2 urunleri dagitabilen, Type1 urunleri replenishment sonrasi 0'da birakan final model.
 // Version 2'den farki burada Agha'nin israrla koydurttugu bir constraint ve variable var
 // Versiyon 3'dan farki bu model Type 1 urunleri de dagitabilir. Ancak bu urunler icin Tau'nun sifir olmasi gerekiyor
@@ -167,29 +167,52 @@ int main() {
 					for (a3 = 1; a3 < teta[2]+tau[2]; a3++)
 						mod.add(X[t][j][0][a2][a3][1] + X[t][j][0][a2][a3][4] + X[t][j][0][a2][a3][5] + X[t][j][0][a2][a3][7] == 0);
 			}
+		
 		/*
 		 for(k=0; k<K;k++) {
 		 mod.add(sT[0][k] == S[k]/2);
-		 }
-		 int ts1 = 12;
-		 int ts2 = 10;
-		 int ts3	= 6;
-		 for(t=1; t<=ts1;t++) {
-		 mod.add(sT[t][0] == t*(S[0]/(ts1*(ts1+1))));
-		 }
-		 for(t=1; t<=ts2;t++) {
-		 mod.add(sT[t][1] == t*(S[1]/(ts2*(ts2+1))));
-		 }
-		 for(t=1; t<=ts3;t++) {
-		 mod.add(sT[t][2] == t*(S[2]/(ts3*(ts3+1))));
+		 mod.add(sT[1][k] == 1*(S[k]/20));
+		 mod.add(sT[2][k] == 2*(S[k]/20));
+		 mod.add(sT[3][k] == 3*(S[k]/20));
+		 mod.add(sT[4][k] == 4*(S[k]/20));
 		 }
 		 */
+		
+		/*
+		 for(k=0; k<K;k++) {
+		 mod.add(sT[0][k] == S[k]/2);
+		 mod.add(sT[1][k] == 1*(S[k]/42));
+		 mod.add(sT[2][k] == 2*(S[k]/42));
+		 mod.add(sT[3][k] == 3*(S[k]/42));
+		 mod.add(sT[4][k] == 4*(S[k]/42));
+		 mod.add(sT[5][k] == 5*(S[k]/42));
+		 mod.add(sT[6][k] == 6*(S[k]/42));
+		 }
+		 */
+		
+		for(k=0; k<K;k++) {
+			mod.add(sT[0][k] == S[k]/2);
+		}
+		int ts1 = 8;
+		int ts2 = 4;
+		int ts3	= 10;
+		for(t=1; t<=ts1;t++) {
+			mod.add(sT[t][0] == t*(S[0]/(ts1*(ts1+1))));
+		}
+		for(t=1; t<=ts2;t++) {
+			mod.add(sT[t][1] == t*(S[1]/(ts2*(ts2+1))));
+		}
+		for(t=1; t<=ts3;t++) {
+			mod.add(sT[t][2] == t*(S[2]/(ts3*(ts3+1))));
+		}
+		
+		
 		//Adding objectives to env
 		mod.add(objs[1]);
 		
 		cout << "GOAL CONSTRAINTS " << endl;
 		//				mod.add(tMort == 0);
-		//				mod.add(tSuff == 0);
+		//				mod.add(tSuff == 3160976);
 		
 		cout << "CONSTRAINT 1" << endl;
 		for (k = 0; k < K; k++) {
@@ -514,6 +537,8 @@ int main() {
 		cplex.extract(mod);
 		cplex.exportModel("model.lp");
 		
+		//		cplex.setParam(IloCplex::EpOpt, 0.000000001);
+		cplex.setParam(IloCplex::TiLim, 60);
 		cplex.solve();
 		
 		cplex.out() << "solution status = " << cplex.getStatus() << endl;
@@ -521,8 +546,8 @@ int main() {
 		
 		cout << "TEST SON" << endl;
 		
-		for(j=0;j<N;j++)
-			toLatexP(cplex, districts);
+//		for(j=0;j<N;j++)
+//			toLatexP(cplex, districts);
 		vector<vector<int> > sufferers(3, vector<int>(13));
 		int suff1 = 0; int t1 = 0;
 		int suff2 = 0; int t2 = 0;
@@ -599,17 +624,16 @@ int main() {
 			}
 		}
 		
-		//		cout << "Sk[k]" << endl;
+		cout << fixed << setprecision(0) << "tMort = " << cplex.getValue(tMort) << endl;
+		cout << "tSuff = " << cplex.getValue(tSuff) << endl;
+		
+		cout << "Sk[k]" << endl;
 		//				for(k=0; k<K; k++)
 		//					cout << fixed << setprecision(0) << cplex.getValue(Sk[k]) << "\t";
 		//				cout << "total = " << cplex.getValue(tSk) << endl;
 		
+		cplex.out() << "solution status = " << cplex.getStatus() << endl;
 		cplex.out() << "objective value = " << cplex.getObjValue() << endl;
-		cout << "tMort = " << cplex.getValue(tMort) << endl;
-		cout << "tSuff = " << cplex.getValue(tSuff) << endl;
-		
-//		env.end();
-//		mod.end();
 	}
 	catch (IloException& e) {
 		cerr << "ERROR: " << e.getMessage() << endl;
