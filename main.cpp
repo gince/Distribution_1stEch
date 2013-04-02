@@ -538,7 +538,7 @@ int main() {
 		cplex.exportModel("model.lp");
 		
 		//		cplex.setParam(IloCplex::EpOpt, 0.000000001);
-		cplex.setParam(IloCplex::TiLim, 60);
+		//		cplex.setParam(IloCplex::TiLim, 60);
 		cplex.solve();
 		
 		cplex.out() << "solution status = " << cplex.getStatus() << endl;
@@ -548,7 +548,7 @@ int main() {
 		
 //		for(j=0;j<N;j++)
 //			toLatexP(cplex, districts);
-		vector<vector<int> > sufferers(3, vector<int>(13));
+//		vector<vector<int> > sufferers(3, vector<int>(13));
 		int suff1 = 0; int t1 = 0;
 		int suff2 = 0; int t2 = 0;
 		int suff3 = 0; int t3 = 0;
@@ -560,17 +560,17 @@ int main() {
 							if (cplex.getValue(p[t][j][a1][a2][a3]) > 0){
 								if (a1 > tau[0]){
 									suff1 += cplex.getValue(p[t][j][a1][a2][a3]) - cplex.getValue(X[t][j][a1][a2][a3][1]) - cplex.getValue(X[t][j][a1][a2][a3][4]) - cplex.getValue(X[t][j][a1][a2][a3][5]) - cplex.getValue(X[t][j][a1][a2][a3][7]);
-									sufferers[0][t1] = cplex.getValue(p[t][j][a1][a2][a3]) - cplex.getValue(X[t][j][a1][a2][a3][1]) - cplex.getValue(X[t][j][a1][a2][a3][4]) - cplex.getValue(X[t][j][a1][a2][a3][5]) - cplex.getValue(X[t][j][a1][a2][a3][7]);
+//									sufferers[0][t1] = cplex.getValue(p[t][j][a1][a2][a3]) - cplex.getValue(X[t][j][a1][a2][a3][1]) - cplex.getValue(X[t][j][a1][a2][a3][4]) - cplex.getValue(X[t][j][a1][a2][a3][5]) - cplex.getValue(X[t][j][a1][a2][a3][7]);
 									t1 += 1;
 								}
 								if (a2 > tau[1]){
 									suff2 += cplex.getValue(p[t][j][a1][a2][a3]) - cplex.getValue(X[t][j][a1][a2][a3][2]) - cplex.getValue(X[t][j][a1][a2][a3][4]) - cplex.getValue(X[t][j][a1][a2][a3][6]) - cplex.getValue(X[t][j][a1][a2][a3][7]);
-									sufferers[1][t2] = cplex.getValue(p[t][j][a1][a2][a3]) - cplex.getValue(X[t][j][a1][a2][a3][2]) - cplex.getValue(X[t][j][a1][a2][a3][4]) - cplex.getValue(X[t][j][a1][a2][a3][6]) - cplex.getValue(X[t][j][a1][a2][a3][7]);
+//									sufferers[1][t2] = cplex.getValue(p[t][j][a1][a2][a3]) - cplex.getValue(X[t][j][a1][a2][a3][2]) - cplex.getValue(X[t][j][a1][a2][a3][4]) - cplex.getValue(X[t][j][a1][a2][a3][6]) - cplex.getValue(X[t][j][a1][a2][a3][7]);
 									t2 += 1;
 								}
 								if (a3 > tau[2]){
 									suff3 += cplex.getValue(p[t][j][a1][a2][a3]) - cplex.getValue(X[t][j][a1][a2][a3][3]) - cplex.getValue(X[t][j][a1][a2][a3][5]) - cplex.getValue(X[t][j][a1][a2][a3][6]) - cplex.getValue(X[t][j][a1][a2][a3][7]);
-									sufferers[2][t3] = cplex.getValue(p[t][j][a1][a2][a3]) - cplex.getValue(X[t][j][a1][a2][a3][3]) - cplex.getValue(X[t][j][a1][a2][a3][5]) - cplex.getValue(X[t][j][a1][a2][a3][6]) - cplex.getValue(X[t][j][a1][a2][a3][7]);
+//									sufferers[2][t3] = cplex.getValue(p[t][j][a1][a2][a3]) - cplex.getValue(X[t][j][a1][a2][a3][3]) - cplex.getValue(X[t][j][a1][a2][a3][5]) - cplex.getValue(X[t][j][a1][a2][a3][6]) - cplex.getValue(X[t][j][a1][a2][a3][7]);
 									t3 += 1;
 								}
 							}
@@ -578,9 +578,11 @@ int main() {
 		cout << "suff1 = " << suff1 << ", t1 = " << t1 << endl;
 		cout << "suff2 = " << suff2 << ", t2 = " << t2 << endl;
 		cout << "suff3 = " << suff3 << ", t3 = " << t3 << endl;
-		cout << "---- sufferers -----" << endl;
-		for (int l = 0; l < T; l++)
-			cout << l << "\t"<< sufferers[0][l] << "\t" << sufferers[1][l] << "\t" << sufferers[2][l] << endl;
+
+		
+//		cout << "---- sufferers -----" << endl;
+//		for (int l = 0; l < T; l++)
+//			cout << l << "\t"<< sufferers[0][l] << "\t" << sufferers[1][l] << "\t" << sufferers[2][l] << endl;
 		
 		cout << "sT[t][k]" << endl;
 		for(t = 0; t < T; t++){
@@ -634,6 +636,7 @@ int main() {
 		
 		cplex.out() << "solution status = " << cplex.getStatus() << endl;
 		cplex.out() << "objective value = " << cplex.getObjValue() << endl;
+
 	}
 	catch (IloException& e) {
 		cerr << "ERROR: " << e.getMessage() << endl;
